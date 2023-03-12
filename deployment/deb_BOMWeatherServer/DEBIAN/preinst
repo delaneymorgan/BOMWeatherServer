@@ -1,0 +1,4 @@
+if [ -e "/etc/systemd/system/BOMWeatherServer.service" ]
+then
+    systemctl stop BOMWeatherServer
+fi

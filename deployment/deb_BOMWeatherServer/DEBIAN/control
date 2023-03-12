@@ -1,0 +1,10 @@
+Package: LocalTimeServer
+Version: <version>
+Architecture: all
+Maintainer: support@delaneymorgan.com.au
+Depends: python3 (>=3.6)
+Installed-Size: in_kb
+Homepage: http://github.com/delaneymorgan/BOMWeatherServer
+Description: A simple local time server
+ Point your browser to http://<listener>:10124 to receive the local time as a JSON object.  i.e.:
+ {"year": 2023, "month": 2, "dom": 17, "hour": 23, "min": 46, "sec": 11, "dow": 4, "doy": 48, "is_dst": 1}

@@ -1,0 +1,5 @@
+chown root:root /etc/systemd/system/BOMWeatherServer.service
+chmod -x /etc/systemd/system/BOMWeatherServer.service
+
+systemctl --now enable BOMWeatherServer
+systemctl start BOMWeatherServer

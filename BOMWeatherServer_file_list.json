@@ -1,0 +1,13 @@
+{
+  "app_files": [
+    "__init__.py",
+    "bom_weather_server.py",
+    "version.py"
+  ],
+  "control_files": {
+    ".deployment/deb_lts/etc/systemd/system/LocalTimeServer.service": "/etc/systemd/system/BOMWeatherServer.service"
+  },
+  "description": "This file is required for standalone BOMWeatherServer Debian package",
+  "install_prefix_path": "/opt/damco/BOMWeatherServer/",
+  "source_prefix_path": "./BOMWeatherServer/"
+}
