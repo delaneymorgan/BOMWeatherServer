@@ -12,7 +12,12 @@ class Periodic(object):
         self.last_time = 0
         return
 
-    def check(self):
+    def check(self, arg=None):
+        """
+        check the periodic action
+        :param arg: optional argument for managed task
+        :return: True => performed task, False => otherwise, time left to next task performance
+        """
         time_now = time.time()
         elapsed_periods = math.floor((time_now - self.start_time) / self.period)
         remainder = (time_now - self.start_time) % self.period
@@ -20,6 +25,6 @@ class Periodic(object):
         if elapsed_periods > self.num_periods:
             self.num_periods += 1
             self.last_time = time_now
-            self.task()
-            return time_left
-        return time_left
+            self.task(arg)
+            return True, time_left
+        return False, time_left

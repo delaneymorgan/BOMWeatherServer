@@ -3,25 +3,28 @@ A simple Australian Bureau of Meteorology weather server
 
 ## Usage:
 
-    BOMWeatherServer -l <listener> -p <port> -o XXXXXX -f XXXXXX [--version] [-?]
+    BOMWeatherServer -l <listener> -p <port> [--version] [-?]
 
 The server will answer queries from the specified listener on the specified port with the current local time in JSON format.
 Specify 127.0.0.1 for only listeners inside the same machine as the server.
 Specify 0.0.0.0 for all listeners.
 
+Enter the -? option to view command-line options.
+
+### BoM Observation/Forecast Place Codes
+
+You will need to know these codes for your location in order to drive the webservice.
 The BoM location codes are somewhat cryptic.
 i.e. an observation place code of IDV60901 refers to Melbourne.
 A forecast place code of IDV10450 also refers to Melbourne.
 
-Enter the -? option to view command-line options.
-
 For instance:
 
-    BOMWeatherServer -l 0.0.0.0 -p 10124 -o IDV60901 -f IDV10450
+    BOMWeatherServer -l 0.0.0.0 -p 10124
 
 ... and in a browser, enter:
 
-    http://<BOMWeatherServer Host>:10124/
+    http://<BOMWeatherServer Host>:10124/?observation=IDV60901&forecast=IDV10450
 
 It should return something like this:
 

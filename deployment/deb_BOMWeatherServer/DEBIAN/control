@@ -7,4 +7,15 @@ Installed-Size: in_kb
 Homepage: http://github.com/delaneymorgan/BOMWeatherServer
 Description: A simple local time server
  Point your browser to http://<listener>:10124 to receive the local time as a JSON object.  i.e.:
- {"year": 2023, "month": 2, "dom": 17, "hour": 23, "min": 46, "sec": 11, "dow": 4, "doy": 48, "is_dst": 1}
+  {
+    "observation": {
+      "temp_now": 22, "temp_min": 12, "temp_max": 25, "icon_name": "sunny"
+    },
+    "forecast": [
+      {"dow": "Mon", "temp_max": "25", "icon_name": "sunny"},
+      {"dow": "Tue", "temp_max": "20", "icon_name": "clear"},
+      {"dow": "Wed", "temp_max": "22", "icon_name": "partly-cloudy"},
+      {"dow": "Thu", "temp_max": "23", "icon_name": "rain"},
+      {"dow": "Fri", "temp_max": "24", "icon_name": "storm"}
+    ]
+  }

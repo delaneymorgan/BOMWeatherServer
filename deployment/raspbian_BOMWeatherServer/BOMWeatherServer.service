@@ -6,7 +6,7 @@ After=network.target
 User=root
 Group=www-data
 WorkingDirectory=/opt/damco/BOMWeatherServer
-ExecStart=/opt/damco/BOMWeatherServer/bom_weather_server.py -l 0.0.0.0 -d XXXXXX -f XXXXXX -p 10124
+ExecStart=/opt/damco/BOMWeatherServer/bom_weather_server.py -l 0.0.0.0 -p 10124
 
 [Install]
 WantedBy=multi-user.target

@@ -5,7 +5,7 @@ After=network.target
 [Service]
 User=root
 Group=www-data
-ExecStart=/opt/damco/BOMWeatherServer/BOMWeatherServer -l 0.0.0.0 -d XXXXXX -f XXXXXX -p 10124
+ExecStart=/opt/damco/BOMWeatherServer/BOMWeatherServer -l 0.0.0.0 -p 10124
 
 [Install]
 WantedBy=multi-user.target
