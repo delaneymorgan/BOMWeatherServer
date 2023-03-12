@@ -1,8 +1,12 @@
 {
   "app_files": [
     "__init__.py",
+    "bom_weather_monitor.py",
     "bom_weather_server.py",
-    "version.py"
+    "main.py",
+    "periodic.py",
+    "version.py",
+    "weather_pending.py"
   ],
   "control_files": {
     ".deployment/deb_lts/etc/systemd/system/LocalTimeServer.service": "/etc/systemd/system/BOMWeatherServer.service"
