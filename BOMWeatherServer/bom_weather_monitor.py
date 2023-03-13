@@ -3,9 +3,14 @@
 
 from periodic import Periodic
 from threading import Thread, Lock
+import json
+import requests
 import time
+import untangle
+
 
 from BOMWeatherServer.weather_pending import WeatherPending
+from BOMWeatherServer.urls import OBSERVATION_URL
 
 
 # =============================================================================
@@ -18,16 +23,25 @@ class BOMWeatherMonitor(Thread):
         self.globals = globals
         self.observation_interval = observation_interval
         self.forecast_interval = forecast_interval
-        self.observation = {}       # {observation_place:{observation={}, periodic=Periodic}}
+        self.observation = {}       # {observation_place:{observation={temp_now:<float>}, periodic=Periodic}}
         self.forecast = {}          # {forecast_place:{forecast={}, periodic=Periodic}}
         return
 
     def get_observation(self, observation_place):
-        # TODO: get observation
         print(f"observing {observation_place}")
-        observation = dict(temp_now=22, temp_min=12, temp_max=25, icon_name="sunny")
-        with self.weather_lock:
-            self.observation[observation_place]["observation"] = observation
+        url = OBSERVATION_URL.format(observation_place, observation_place)
+        try:
+            resp = requests.get(url)
+            if resp:
+                # observations typically contains many (hundreds, perhaps),
+                # lets just grab the current observation.
+                content_json = resp.content
+                content = json.loads(content_json)
+                observation = content["observations"]["data"][0]
+                with self.weather_lock:
+                    self.observation[observation_place]["observation"]["temp_now"] = observation["air_temp"]
+        except Exception as ex:
+            print(f"Error: {type(ex)}/{ex}")
         return
 
     def get_forecast(self, forecast_place):

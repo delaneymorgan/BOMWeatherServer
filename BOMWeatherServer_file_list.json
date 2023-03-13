@@ -5,6 +5,7 @@
     "bom_weather_server.py",
     "main.py",
     "periodic.py",
+    "urls.py",
     "version.py",
     "weather_pending.py"
   ],

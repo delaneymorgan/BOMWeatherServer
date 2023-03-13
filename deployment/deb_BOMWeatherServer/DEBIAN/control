@@ -9,7 +9,7 @@ Description: A simple local time server
  Point your browser to http://<listener>:10124 to receive the local time as a JSON object.  i.e.:
   {
     "observation": {
-      "temp_now": 22, "temp_min": 12, "temp_max": 25, "icon_name": "sunny"
+      "temp_now": 22.7
     },
     "forecast": [
       {"dow": "Mon", "temp_max": "25", "icon_name": "sunny"},

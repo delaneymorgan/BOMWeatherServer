@@ -5,7 +5,6 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 from urllib import parse
 import json
 import re
-import untangle
 
 from BOMWeatherServer.weather_pending import WeatherPending
 
