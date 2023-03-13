@@ -2,7 +2,7 @@
 # coding=utf-8
 
 from functools import partial
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import HTTPServer
 import argparse
 
 import BOMWeatherServer
@@ -39,6 +39,7 @@ def arg_parser():
                                      description=f"{BOMWeatherServer.__name__} - {__description__}", add_help=False)
     parser.add_argument("-l", "--listener", help="listener name/address. 0.0.0.0 for any listener.", required=True)
     parser.add_argument("-p", "--port", type=int, help="port#", required=True)
+    parser.add_argument("-v", "--verbose", help="verbose mode", action="store_true")
     parser.add_argument("--version", action="version", version=f"{BOMWeatherServer.__name__} {__version__}")
     parser.add_argument("-?", "--help", help="show help message and quit", action="help")
     args = parser.parse_args()
@@ -49,17 +50,17 @@ def arg_parser():
 
 
 def main():
-    args = arg_parser()
-    globals = Globals()
-    monitor = BOMWeatherMonitor(globals, OBSERVATION_INTERVAL, FORECAST_INTERVAL)
-    handler = partial(MyServerHandler, monitor)
-    server = HTTPServer(('', args.port), handler)
-    print(f"{BOMWeatherServer.__name__} started http://{args.listener}:{args.port}")
+    my_args = arg_parser()
+    my_globals = Globals()
+    monitor = BOMWeatherMonitor(my_args, my_globals, OBSERVATION_INTERVAL, FORECAST_INTERVAL)
+    handler = partial(MyServerHandler, my_args, monitor)
+    server = HTTPServer(('', my_args.port), handler)
+    print(f"{BOMWeatherServer.__name__} started http://{my_args.listener}:{my_args.port}")
     monitor.start()
     try:
         server.serve_forever()
     except KeyboardInterrupt:
-        globals.running = False
+        my_globals.running = False
     server.server_close()
     print(f"{BOMWeatherServer.__name__} stopped")
     return

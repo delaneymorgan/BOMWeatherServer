@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # coding=utf-8
 
-from http.server import BaseHTTPRequestHandler, HTTPServer
+from http.server import BaseHTTPRequestHandler
 from urllib import parse
 import json
 import re
@@ -35,12 +35,14 @@ class InvalidParameters(Exception):
 
 
 class MyServerHandler(BaseHTTPRequestHandler):
-    def __init__(self, monitor, *args, **kwargs):
+    def __init__(self, my_args, monitor, *args, **kwargs):
+        self.my_args = my_args
         self.monitor = monitor
         self.place_code_re = re.compile(PLACE_CODE_REGEX)
         super(MyServerHandler, self).__init__(*args, **kwargs)
         return
 
+    # noinspection PyPep8Naming
     def do_HEAD(self, code):
         self.send_response(code)
         self.send_header("Content-Type", "application/json")

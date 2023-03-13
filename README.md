@@ -26,9 +26,60 @@ For instance:
 
     http://<BOMWeatherServer Host>:10124/?observation=IDV60901&forecast=IDV10450
 
-It should return something like this:
+The first attempt should fail with a 451 response code and a "try again" reason.
 
-    {"observation": {}, "forecast": {}}
+Eventually, It should return something like this:
+
+    {
+      "observation": {
+        "temp_now": 19.7,
+        "icon_name": "partly-cloudy",
+        "temp_max": 23.0
+      },
+      "forecast": [
+        {
+          "icon_name": "partly-cloudy",
+          "temp_max": 23.0,
+          "timestamp": 1678647600.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 13.0,
+          "temp_max": 29.0,
+          "timestamp": 1678716000.0
+        },
+        {
+          "icon_name": "cloudy",
+          "temp_min": 16.0,
+          "temp_max": 27.0,
+          "timestamp": 1678802400.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 18.0,
+          "temp_max": 29.0,
+          "timestamp": 1678888800.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 15.0,
+          "temp_max": 26.0,
+          "timestamp": 1678975200.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 15.0,
+          "temp_max": 25.0,
+          "timestamp": 1679061600.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 14.0,
+          "temp_max": 24.0,
+          "timestamp": 1679148000.0
+        }
+      ]
+    }
 
 ## Building Python Package:
 

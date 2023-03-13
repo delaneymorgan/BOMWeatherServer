@@ -7,15 +7,53 @@ Installed-Size: in_kb
 Homepage: http://github.com/delaneymorgan/BOMWeatherServer
 Description: A simple local time server
  Point your browser to http://<listener>:10124 to receive the local time as a JSON object.  i.e.:
-  {
-    "observation": {
-      "temp_now": 22.7
-    },
-    "forecast": [
-      {"dow": "Mon", "temp_max": "25", "icon_name": "sunny"},
-      {"dow": "Tue", "temp_max": "20", "icon_name": "clear"},
-      {"dow": "Wed", "temp_max": "22", "icon_name": "partly-cloudy"},
-      {"dow": "Thu", "temp_max": "23", "icon_name": "rain"},
-      {"dow": "Fri", "temp_max": "24", "icon_name": "storm"}
-    ]
-  }
+    {
+      "observation": {
+        "temp_now": 19.7,
+        "icon_name": "partly-cloudy",
+        "temp_max": 23.0
+      },
+      "forecast": [
+        {
+          "icon_name": "partly-cloudy",
+          "temp_max": 23.0,
+          "timestamp": 1678647600.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 13.0,
+          "temp_max": 29.0,
+          "timestamp": 1678716000.0
+        },
+        {
+          "icon_name": "cloudy",
+          "temp_min": 16.0,
+          "temp_max": 27.0,
+          "timestamp": 1678802400.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 18.0,
+          "temp_max": 29.0,
+          "timestamp": 1678888800.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 15.0,
+          "temp_max": 26.0,
+          "timestamp": 1678975200.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 15.0,
+          "temp_max": 25.0,
+          "timestamp": 1679061600.0
+        },
+        {
+          "icon_name": "partly-cloudy",
+          "temp_min": 14.0,
+          "temp_max": 24.0,
+          "timestamp": 1679148000.0
+        }
+      ]
+    }
